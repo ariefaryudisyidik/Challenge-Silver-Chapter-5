@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple">#733572</color>
-    <color name="purple_dark">#450646</color>
-    <color name="purple_light">#a362a1</color>
-    <color name="orange">#ffab40</color>
-    <color name="orange_dark">#c77c02</color>
-    <color name="orange_light">#ffdd71</color>
+    <!--    <color name="primary">#042541</color>-->
+    <color name="primary">#4fcca3</color>
+    <color name="primary_2">#242A32</color>
+    <color name="primary_dark">#00001b</color>
+    <color name="primary_light">#354d6c</color>
+    <color name="secondary">#4fcca3</color>
+    <color name="secondary_dark">#009a74</color>
+    <color name="secondary_light">#85ffd4</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#4fcca3</color>
 </resources>
