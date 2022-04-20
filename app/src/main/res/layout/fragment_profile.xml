@@ -137,6 +137,8 @@
         style="@style/ButtonPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@android:color/transparent"
         android:gravity="center"
         android:text="@string/logout"
         android:textAllCaps="false"
