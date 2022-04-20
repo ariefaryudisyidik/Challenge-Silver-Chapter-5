@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -21,6 +23,9 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnLogout.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
+        }
     }
 
     override fun onDestroy() {
