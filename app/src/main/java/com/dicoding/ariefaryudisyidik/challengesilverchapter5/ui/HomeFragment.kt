@@ -1,30 +1,23 @@
 package com.dicoding.ariefaryudisyidik.challengesilverchapter5.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.adapter.MovieAdapter
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentHomeBinding
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.adapter.MovieAdapter
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.MovieResponse
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Results
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.retrofit.ApiConfig
-import retrofit2.Call
-import retrofit2.Response
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Movie
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.MainViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    companion object {
-        private const val TAG = "HomeFragment"
-        private const val API_KEY = "3e15ac9cb3114f2f303febd749ac0cf2"
-    }
+    private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,49 +29,36 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fetchData()
+
+        mainViewModel.movie.observe(viewLifecycleOwner) { setMovieData(it) }
+        mainViewModel.isLoading.observe(viewLifecycleOwner) { showLoading(it) }
         binding.ibProfile.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
     }
 
-    private fun fetchData() {
-        val client = ApiConfig.getApiService().getMovie(API_KEY)
-        client.enqueue(object : retrofit2.Callback<MovieResponse> {
-            override fun onResponse(
-                call: Call<MovieResponse>,
-                response: Response<MovieResponse>
-            ) {
-                val responseBody = response.body()
-                if (responseBody != null) {
-                    val result = responseBody.results
-                    val movieAdapter = MovieAdapter(result)
-                    binding.apply {
-                        rvMovies.setHasFixedSize(true)
-                        rvMovies.layoutManager = LinearLayoutManager(activity)
-                        rvMovies.adapter = movieAdapter
-                        movieAdapter.setOnItemClickCallback(object :
-                            MovieAdapter.OnItemClickCallback {
-                            override fun onItemClicked(data: Results) {
-                                findNavController().navigate(
-                                    HomeFragmentDirections.actionHomeFragmentToDetailFragment(
-                                        data
-                                    )
-                                )
-                            }
-                        })
-                        progressBar.visibility = View.GONE
-                    }
+    private fun setMovieData(movie: List<Movie>) {
+        binding.apply {
+            val movieAdapter = MovieAdapter(movie)
+            rvMovies.setHasFixedSize(true)
+            rvMovies.layoutManager = LinearLayoutManager(activity)
+            rvMovies.adapter = movieAdapter
+            movieAdapter.setOnItemClickCallback(object :
+                MovieAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Movie) {
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                            data
+                        )
+                    )
                 }
-            }
-
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: ${t.message}")
-                binding.progressBar.visibility = View.GONE
-            }
-        })
+            })
+        }
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
 
     override fun onDestroy() {
         super.onDestroy()

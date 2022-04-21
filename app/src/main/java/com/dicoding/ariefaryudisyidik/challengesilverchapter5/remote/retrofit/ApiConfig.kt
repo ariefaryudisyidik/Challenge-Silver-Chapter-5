@@ -16,7 +16,6 @@ class ApiConfig {
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
                 .build()
             return retrofit.create(ApiService::class.java)
         }

@@ -58,7 +58,7 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="movie"
-            app:argType="com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Results" />
+            app:argType="com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Movie" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

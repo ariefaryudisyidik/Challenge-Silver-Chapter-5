@@ -10,11 +10,11 @@ data class MovieResponse(
     val page: Int,
 
     @field:SerializedName("results")
-    val results: List<Results>,
+    val results: List<Movie>,
 )
 
 @Parcelize
-data class Results(
+data class Movie(
 
     @field:SerializedName("overview")
     val overview: String,
@@ -42,4 +42,4 @@ data class Results(
 
     @field:SerializedName("vote_count")
     val voteCount: Int
-): Parcelable
+) : Parcelable

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.adapter.MovieAdapter
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentDetailBinding
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.adapter.MovieAdapter
 
 class DetailFragment : Fragment() {
 

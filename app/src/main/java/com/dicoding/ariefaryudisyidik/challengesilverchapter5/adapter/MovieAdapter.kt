@@ -1,24 +1,19 @@
-package com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.adapter
+package com.dicoding.ariefaryudisyidik.challengesilverchapter5.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.ItemMovieBinding
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Results
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.ui.HomeFragmentDirections
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Movie
 
-class MovieAdapter(private val listMovie: List<Results>) :
+class MovieAdapter(private val listMovie: List<Movie>) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    companion object{
-        const val posterBaseUrl = "https://image.tmdb.org/t/p/original/"
+    companion object {
+        const val posterBaseUrl = "https://image.tmdb.org/t/p/original"
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -26,7 +21,7 @@ class MovieAdapter(private val listMovie: List<Results>) :
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Results)
+        fun onItemClicked(data: Movie)
     }
 
     class ViewHolder(var binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
