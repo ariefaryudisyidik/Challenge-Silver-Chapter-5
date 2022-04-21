@@ -53,23 +53,28 @@ class HomeFragment : Fragment() {
                 if (responseBody != null) {
                     val result = responseBody.results
                     val movieAdapter = MovieAdapter(result)
-                    binding.rvMovies.setHasFixedSize(true)
-                    binding.rvMovies.layoutManager = LinearLayoutManager(activity)
-                    binding.rvMovies.adapter = movieAdapter
-                    movieAdapter.setOnItemClickCallback(object : MovieAdapter.OnItemClickCallback {
-                        override fun onItemClicked(data: Results) {
-                            findNavController().navigate(
-                                HomeFragmentDirections.actionHomeFragmentToDetailFragment(
-                                    data
+                    binding.apply {
+                        rvMovies.setHasFixedSize(true)
+                        rvMovies.layoutManager = LinearLayoutManager(activity)
+                        rvMovies.adapter = movieAdapter
+                        movieAdapter.setOnItemClickCallback(object :
+                            MovieAdapter.OnItemClickCallback {
+                            override fun onItemClicked(data: Results) {
+                                findNavController().navigate(
+                                    HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                                        data
+                                    )
                                 )
-                            )
-                        }
-                    })
+                            }
+                        })
+                        progressBar.visibility = View.GONE
+                    }
                 }
             }
 
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 Log.e(TAG, "onFailure: ${t.message}")
+                binding.progressBar.visibility = View.GONE
             }
         })
     }

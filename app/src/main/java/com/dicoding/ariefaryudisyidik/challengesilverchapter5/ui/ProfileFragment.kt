@@ -24,7 +24,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnLogout.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
+            findNavController().navigate(
+                R.id.action_profileFragment_to_loginFragment,
+            )
         }
     }
 
