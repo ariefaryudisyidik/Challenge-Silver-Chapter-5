@@ -5,14 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.database.User
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentLoginBinding
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.UserViewModel
 
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+    private val userViewModel by viewModels<UserViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,11 +29,16 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-        }
-        binding.tvRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+
+        binding.apply {
+            btnLogin.setOnClickListener {
+                val email = edtEmail.text.toString()
+                val password = edtPassword.text.toString()
+                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            }
+            tvRegister.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            }
         }
     }
 

@@ -28,7 +28,7 @@
     </style>
 
     <style name="TextBody.Small">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextTitle.Large">
@@ -40,7 +40,7 @@
     </style>
 
     <style name="TextTitle.Small">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="RoundedImageView">

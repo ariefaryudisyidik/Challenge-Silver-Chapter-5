@@ -10,7 +10,7 @@ import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.retrofit.Ap
 import retrofit2.Call
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class MovieViewModel : ViewModel() {
 
     private val _movie = MutableLiveData<List<Movie>>()
     val movie: LiveData<List<Movie>> = _movie

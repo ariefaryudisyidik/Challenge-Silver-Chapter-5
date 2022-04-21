@@ -6,18 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.adapter.MovieAdapter
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.database.User
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentHomeBinding
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Movie
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.MainViewModel
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.MovieViewModel
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.UserViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val mainViewModel by viewModels<MainViewModel>()
+    private val movieViewModel by viewModels<MovieViewModel>()
+    private var userList = emptyList<User>()
+    private val args: HomeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +36,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel.movie.observe(viewLifecycleOwner) { setMovieData(it) }
-        mainViewModel.isLoading.observe(viewLifecycleOwner) { showLoading(it) }
+        movieViewModel.movie.observe(viewLifecycleOwner) { setMovieData(it) }
+        movieViewModel.isLoading.observe(viewLifecycleOwner) { showLoading(it) }
         binding.ibProfile.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
+    }
+
+    private fun setUserData(user: List<User>) {
+        this.userList = user
     }
 
     private fun setMovieData(movie: List<Movie>) {
