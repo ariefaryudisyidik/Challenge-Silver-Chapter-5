@@ -1,6 +1,8 @@
 package com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class MovieResponse(
 
@@ -8,28 +10,17 @@ data class MovieResponse(
     val page: Int,
 
     @field:SerializedName("results")
-    val results: List<ResultsItem>,
+    val results: List<Results>,
 )
 
-data class ResultsItem(
+@Parcelize
+data class Results(
 
     @field:SerializedName("overview")
     val overview: String,
 
-    @field:SerializedName("original_language")
-    val originalLanguage: String,
-
-    @field:SerializedName("original_title")
-    val originalTitle: String,
-
-    @field:SerializedName("video")
-    val video: Boolean,
-
     @field:SerializedName("title")
     val title: String,
-
-    @field:SerializedName("genre_ids")
-    val genreIds: List<Any>,
 
     @field:SerializedName("poster_path")
     val posterPath: String,
@@ -49,9 +40,6 @@ data class ResultsItem(
     @field:SerializedName("id")
     val id: Int,
 
-    @field:SerializedName("adult")
-    val adult: Boolean,
-
     @field:SerializedName("vote_count")
     val voteCount: Int
-)
+): Parcelable

@@ -40,7 +40,11 @@
         android:id="@+id/detailFragment"
         android:name="com.dicoding.ariefaryudisyidik.challengesilverchapter5.ui.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="movie"
+            app:argType="com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Results" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.dicoding.ariefaryudisyidik.challengesilverchapter5.ui.ProfileFragment"

@@ -48,7 +48,7 @@
         style="@style/TextTitle.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/about_movie"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/iv_poster"
@@ -93,8 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/average_rating"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintStart_toStartOf="@+id/tv_release_date"
+        app:layout_constraintTop_toBottomOf="@+id/tv_release_date" />
 
     <TextView
         android:id="@+id/textView13"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tv_rate_count"
         style="@style/TextBody.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,11 +123,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Popularity"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="@+id/tv_average_rating"
+        app:layout_constraintTop_toBottomOf="@+id/tv_average_rating" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/tv_popularity"
         style="@style/TextBody.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/tv_release_date"
         style="@style/TextBody.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/tv_average_rating"
         style="@style/TextBody.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

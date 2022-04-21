@@ -12,6 +12,7 @@ import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentHomeBinding
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.adapter.MovieAdapter
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.MovieResponse
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Results
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Response
@@ -55,15 +56,24 @@ class HomeFragment : Fragment() {
                     binding.rvMovies.setHasFixedSize(true)
                     binding.rvMovies.layoutManager = LinearLayoutManager(activity)
                     binding.rvMovies.adapter = movieAdapter
+                    movieAdapter.setOnItemClickCallback(object : MovieAdapter.OnItemClickCallback {
+                        override fun onItemClicked(data: Results) {
+                            findNavController().navigate(
+                                HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                                    data
+                                )
+                            )
+                        }
+                    })
                 }
             }
 
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 Log.e(TAG, "onFailure: ${t.message}")
             }
-
         })
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
