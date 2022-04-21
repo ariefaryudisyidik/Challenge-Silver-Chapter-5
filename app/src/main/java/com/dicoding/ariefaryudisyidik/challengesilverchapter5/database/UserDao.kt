@@ -1,6 +1,5 @@
 package com.dicoding.ariefaryudisyidik.challengesilverchapter5.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -11,9 +10,6 @@ interface UserDao {
     @Update
     fun update(user: User)
 
-    @Query("SELECT * FROM user")
-    fun getAllUsers(): LiveData<List<User>>
-
-    @Query("SELECT * FROM user WHERE email=(:email) AND password=(:password)")
+    @Query("SELECT * FROM user WHERE email LIKE :email AND password LIKE :password")
     fun checkUser(email: String, password: String): User
 }

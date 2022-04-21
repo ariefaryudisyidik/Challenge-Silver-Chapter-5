@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import com.dicoding.ariefaryudisyidik.challengesilverchapter5.database.User
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentHomeBinding
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Movie
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.MovieViewModel
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.UserViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

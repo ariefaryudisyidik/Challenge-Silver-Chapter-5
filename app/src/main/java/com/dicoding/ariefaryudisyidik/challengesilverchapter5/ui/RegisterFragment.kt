@@ -62,7 +62,6 @@ class RegisterFragment : Fragment() {
 
     private fun reset() {
         binding.apply {
-            2
             edtUsername.setText("")
             edtUsername.clearFocus()
             edtEmail.setText("")

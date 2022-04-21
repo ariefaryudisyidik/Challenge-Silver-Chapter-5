@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.database.User
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentLoginBinding
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.UserViewModel
 

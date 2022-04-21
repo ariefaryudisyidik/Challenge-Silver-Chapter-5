@@ -1,12 +1,10 @@
 package com.dicoding.ariefaryudisyidik.challengesilverchapter5.database
 
 import android.os.Parcelable
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
-import org.jetbrains.annotations.NotNull
 
 @Parcelize
 @Entity
@@ -24,12 +22,12 @@ data class User(
     @ColumnInfo(name = "password")
     var password: String,
 
-    @ColumnInfo(name = "fullName")
+    /*@ColumnInfo(name = "fullName")
     var fullName: String,
 
     @ColumnInfo(name = "dateOfBirth")
     var dateOfBirth: String,
 
     @ColumnInfo(name = "address")
-    var address: String
+    var address: String*/
 ) : Parcelable

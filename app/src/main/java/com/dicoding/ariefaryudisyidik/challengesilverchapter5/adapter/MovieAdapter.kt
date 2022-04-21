@@ -13,7 +13,7 @@ class MovieAdapter(private val listMovie: List<Movie>) :
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     companion object {
-        const val posterBaseUrl = "https://image.tmdb.org/t/p/original"
+        const val posterBaseUrl = "https://image.tmdb.org/t/p/w500"
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
