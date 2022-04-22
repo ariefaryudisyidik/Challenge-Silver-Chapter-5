@@ -1,5 +1,6 @@
 package com.dicoding.ariefaryudisyidik.challengesilverchapter5.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.adapter.MovieAdapter
-import com.dicoding.ariefaryudisyidik.challengesilverchapter5.database.User
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentHomeBinding
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.helper.Preferences
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.remote.response.Movie
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.viewmodel.MovieViewModel
 
@@ -20,20 +21,22 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val movieViewModel by viewModels<MovieViewModel>()
-    private var userList = emptyList<User>()
     private val args: HomeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        binding.tvUsername.text = "Welcome, ${args.username}!"
+        binding.tvUsername.text = "Welcome, ${Preferences().getLoggedInUser(requireContext())}!"
         movieViewModel.movie.observe(viewLifecycleOwner) { setMovieData(it) }
         movieViewModel.isLoading.observe(viewLifecycleOwner) { showLoading(it) }
         binding.ibProfile.setOnClickListener {
@@ -41,10 +44,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUserData(user: List<User>) {
-        this.userList = user
-    }
-
+    @SuppressLint("SetTextI18n")
     private fun setMovieData(movie: List<Movie>) {
         binding.apply {
             val movieAdapter = MovieAdapter(movie)

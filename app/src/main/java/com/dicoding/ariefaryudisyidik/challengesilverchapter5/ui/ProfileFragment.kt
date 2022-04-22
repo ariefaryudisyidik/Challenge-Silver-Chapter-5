@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.R
 import com.dicoding.ariefaryudisyidik.challengesilverchapter5.databinding.FragmentProfileBinding
+import com.dicoding.ariefaryudisyidik.challengesilverchapter5.helper.Preferences
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -24,6 +25,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnLogout.setOnClickListener {
+            Preferences().clearLoggedInUser(requireContext())
             findNavController().navigate(
                 R.id.action_profileFragment_to_loginFragment,
             )

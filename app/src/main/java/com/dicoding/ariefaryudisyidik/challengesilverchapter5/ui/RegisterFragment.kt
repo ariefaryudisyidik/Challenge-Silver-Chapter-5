@@ -39,7 +39,7 @@ class RegisterFragment : Fragment() {
                 val confirmPassword = edtConfirmPassword.text.toString()
                 if (username.isNullOrEmpty() || email.isNullOrEmpty() || password.isNullOrEmpty() || confirmPassword.isNullOrEmpty()) {
                     Toast.makeText(
-                        requireContext(), "Please fill out all fields",
+                        requireContext(), "Field cannot be empty",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else if (password != confirmPassword) {

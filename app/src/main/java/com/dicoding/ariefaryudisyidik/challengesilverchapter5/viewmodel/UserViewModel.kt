@@ -22,4 +22,10 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             repository.insert(user)
         }
     }
+
+    fun checkUser(email: String, password: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.checkUser(email, password)
+        }
+    }
 }
